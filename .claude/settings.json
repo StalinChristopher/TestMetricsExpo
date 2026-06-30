@@ -1,0 +1,29 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit|MultiEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 .claude/hooks/snapshot_ai_output.py",
+            "timeout": 10,
+            "statusMessage": "📸 Snapshotting AI output..."
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 .claude/hooks/stop_generate_attribution.py",
+            "timeout": 15,
+            "statusMessage": "📊 Calculating AI attribution stats..."
+          }
+        ]
+      }
+    ]
+  }
+}

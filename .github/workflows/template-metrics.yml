@@ -1,0 +1,23 @@
+name: Template Metrics
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    types: [closed]
+  workflow_dispatch:
+
+jobs:
+  measure:
+    if: github.event_name != 'pull_request' || github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: codeandtheory/ct-github-code-metrics@v1
+        with:
+          devlake-webhook-url: ${{ secrets.DEVLAKE_WEBHOOK_URL }}
+          devlake-basic-auth:  ${{ secrets.DEVLAKE_BASIC_AUTH }}
+          anthropic-api-key:   ${{ secrets.ANTHROPIC_API_KEY }}
