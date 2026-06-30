@@ -1,0 +1,2 @@
+# Output of `npm run generate:tokens` — formatting is not stable across regen runs
+src/designSystem/generated

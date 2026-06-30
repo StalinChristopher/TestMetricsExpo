@@ -1,0 +1,151 @@
+{
+  "tabs": {
+    "home": "Inicio",
+    "explore": "Explorar",
+    "profile": "Perfil",
+    "posts": "Publicaciones"
+  },
+  "drawer": {
+    "tabRootTitle": "Principal",
+    "tabRootLabel": "Inicio (pestañas)",
+    "aboutTitle": "Acerca de",
+    "settingsTitle": "Ajustes"
+  },
+  "rootModals": {
+    "exampleTitle": "Modal de presentación",
+    "transparentTitle": "Modal transparente",
+    "fullScreenTitle": "Modal a pantalla completa"
+  },
+  "stacks": {
+    "homeDetailTitle": "Detalle",
+    "exploreDetailTitle": "Sección",
+    "settingsTitle": "Ajustes"
+  },
+  "aboutDrawer": {
+    "title": "Pantalla del menú lateral",
+    "caption": "Abierta desde el menú lateral (no es una pestaña).",
+    "goTabs": "Ir a pestañas (TabRoot)",
+    "closeDrawer": "closeDrawer()"
+  },
+  "home": {
+    "title": "Pila Inicio",
+    "caption": "Push, parámetros, pop, replace, salto de pestaña, modales raíz, menú lateral",
+    "navigateDetail": "Navegar con parámetros -> Detalle de inicio",
+    "pushDuplicate": "Push duplicado HomeMain (profundidad de pila)",
+    "jumpExplore": "Ir a pestaña Explorar (navegación compuesta)",
+    "openSettings": "Abrir Perfil -> Ajustes (objetivo anidado)",
+    "openDrawer": "Abrir menú lateral",
+    "rootModal": "Modal raíz (navigationRef)",
+    "transparentModal": "Modal raíz transparente",
+    "fullScreenModal": "Modal a pantalla completa (estilo iOS)",
+    "demoItemTitle": "Elemento demo",
+    "fromHomeMessage": "Desde Inicio"
+  },
+  "homeDetail": {
+    "title": "Detalle de inicio",
+    "itemId": "itemId: {{id}}",
+    "titleMeta": "título: {{title}}",
+    "goBack": "goBack()",
+    "popToTop": "popToTop()",
+    "replaceMain": "replace -> HomeMain",
+    "setParams": "setParams (actualizar título)",
+    "updatedTitle": "Título actualizado"
+  },
+  "explore": {
+    "title": "Pila Explorar",
+    "searchPlaceholder": "Buscar…",
+    "navigateDetail": "Navegar -> Detalle de explorar (params)",
+    "switchHome": "Cambiar a pestaña Inicio"
+  },
+  "exploreDetail": {
+    "title": "Sección: {{section}}",
+    "pop": "pop()"
+  },
+  "profile": {
+    "title": "Pila Perfil",
+    "navigateSettings": "Navegar -> Ajustes",
+    "reset": "reset() pila a ProfileMain"
+  },
+  "settings": {
+    "title": "Ajustes",
+    "openedFrom": "Abierto desde: {{from}}",
+    "goBack": "goBack()",
+    "selectYourLanguage": "Selecciona tu idioma",
+    "languageSheetTitle": "Selecciona tu idioma",
+    "languageEnglish": "Inglés",
+    "languageSpanish": "Español",
+    "useDeviceLanguage": "Usar idioma del dispositivo",
+    "language": "Idioma",
+    "theme": "Tema",
+    "search": "Buscar ajustes",
+    "themeSheetTitle": "Seleccionar tema",
+    "themeSystem": "Sistema",
+    "themeLight": "Tema claro",
+    "themeDark": "Tema oscuro"
+  },
+  "posts": {
+    "title": "Publicaciones",
+    "loading": "Cargando publicaciones…",
+    "empty": "No hay publicaciones.",
+    "searchPlaceholder": "Buscar publicaciones…",
+    "noResults": "Ninguna publicación coincide con tu búsqueda.",
+    "searchResultsFor": "Resultados para \"{{query}}\""
+  },
+  "errorBoundary": {
+    "title": "¡Vaya! Algo salió mal",
+    "fallbackMessage": "Ocurrió un error inesperado.",
+    "tryAgain": "Intentar de nuevo",
+    "iconA11y": "Advertencia"
+  },
+  "exampleModal": {
+    "title": "Modal de presentación",
+    "caption": "options.presentation = 'modal'",
+    "dismiss": "Cerrar (goBack)"
+  },
+  "transparentModal": {
+    "title": "Modal transparente",
+    "close": "Cerrar"
+  },
+  "fullScreenModal": {
+    "title": "Modal a pantalla completa",
+    "caption": "presentation: fullScreenModal (común en iOS)",
+    "dismiss": "Cerrar"
+  },
+  "socialLogin": {
+    "signInErrorTitle": "Error al iniciar sesión",
+    "errorTitle": "Error",
+    "signOutFailed": "No se pudo cerrar sesión",
+    "signInFailed": "Error al iniciar sesión con {{provider}}",
+    "signedInFallback": "Sesión iniciada",
+    "viaProvider": "vía {{provider}}",
+    "signOut": "Cerrar sesión",
+    "title": "Iniciar sesión",
+    "subtitle": "Elige un proveedor para continuar",
+    "continueGoogle": "Continuar con Google",
+    "continueApple": "Continuar con Apple",
+    "continueFacebook": "Continuar con Facebook"
+  },
+  "carouselCatalog": {
+    "screenTitle": "Catálogo de carrusel",
+    "sectionFullWidth": "Ancho completo con paginación",
+    "sectionFullWidthCaption": "Carrusel horizontal con bucle. Los puntos usan `onProgressChange` y `Pagination.Basic` del mismo paquete.",
+    "sectionPeek": "Carril tipo tarjeta (peek)",
+    "sectionPeekCaption": "El ancho de cada diapositiva es menor que la fila para que se vean las vecinas—típico en héroes y destacados.",
+    "sectionParallax": "Modo parallax",
+    "sectionParallaxCaption": "Las diapositivas no activas escalan y se desplazan (`mode=\"parallax\"`) para centrar la activa.",
+    "sectionStack": "Pila horizontal",
+    "sectionStackCaption": "Cartas superpuestas (`mode=\"horizontal-stack\"`)—útil para opciones o medios al deslizar.",
+    "sectionVertical": "Carrusel vertical",
+    "sectionVerticalCaption": "Disposición `vertical` cuando el avance arriba/abajo encaja mejor que horizontal.",
+    "slideTitle": "Diapositiva {{n}}",
+    "swipeHint": "Desliza a los lados",
+    "paginationHint": "El progreso mueve los puntos; puedes añadir `onPress` en `Pagination.Basic` para saltar.",
+    "peekHint": "Un `width` menor que la pantalla centra el carril y muestra las diapositivas adyacentes.",
+    "verticalHint": "Los umbrales del gesto vertical permiten usar el carrusel dentro de esta vista con scroll.",
+    "a11yFullWidth": "Carrusel a ancho completo con puntos",
+    "a11yPeek": "Carrusel tipo peek con diapositivas más estrechas",
+    "a11yParallax": "Ejemplo de carrusel parallax",
+    "a11yStack": "Ejemplo de carrusel en pila horizontal",
+    "a11yVertical": "Ejemplo de carrusel vertical"
+  }
+}

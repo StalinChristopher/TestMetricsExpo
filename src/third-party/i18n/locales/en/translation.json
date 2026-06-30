@@ -1,0 +1,151 @@
+{
+  "tabs": {
+    "home": "Home",
+    "explore": "Explore",
+    "profile": "Profile",
+    "posts": "Posts"
+  },
+  "drawer": {
+    "tabRootTitle": "Main",
+    "tabRootLabel": "Home (tabs)",
+    "aboutTitle": "About",
+    "settingsTitle": "Settings"
+  },
+  "rootModals": {
+    "exampleTitle": "Presentation modal",
+    "transparentTitle": "Transparent modal",
+    "fullScreenTitle": "Full screen modal"
+  },
+  "stacks": {
+    "homeDetailTitle": "Detail",
+    "exploreDetailTitle": "Section",
+    "settingsTitle": "Settings"
+  },
+  "aboutDrawer": {
+    "title": "Drawer screen",
+    "caption": "Opened from drawer menu (not a tab).",
+    "goTabs": "Go to TabRoot (tabs)",
+    "closeDrawer": "closeDrawer()"
+  },
+  "home": {
+    "title": "Home stack",
+    "caption": "Push, params, pop, replace, jump to tab, root modals, drawer",
+    "navigateDetail": "Navigate with params -> HomeDetail",
+    "pushDuplicate": "Push duplicate HomeMain (stack depth)",
+    "jumpExplore": "Jump to Explore tab (composite navigate)",
+    "openSettings": "Open Profile -> Settings (nested target)",
+    "openDrawer": "Open drawer",
+    "rootModal": "Root modal (navigationRef)",
+    "transparentModal": "Transparent root modal",
+    "fullScreenModal": "Full screen modal (iOS-style)",
+    "demoItemTitle": "Demo item",
+    "fromHomeMessage": "From Home"
+  },
+  "homeDetail": {
+    "title": "HomeDetail",
+    "itemId": "itemId: {{id}}",
+    "titleMeta": "title: {{title}}",
+    "goBack": "goBack()",
+    "popToTop": "popToTop()",
+    "replaceMain": "replace -> HomeMain",
+    "setParams": "setParams (update title)",
+    "updatedTitle": "Updated title"
+  },
+  "explore": {
+    "title": "Explore stack",
+    "searchPlaceholder": "Search…",
+    "navigateDetail": "Navigate -> ExploreDetail (params)",
+    "switchHome": "Switch to Home tab"
+  },
+  "exploreDetail": {
+    "title": "Section: {{section}}",
+    "pop": "pop()"
+  },
+  "profile": {
+    "title": "Profile stack",
+    "navigateSettings": "Navigate -> Settings",
+    "reset": "reset() stack to ProfileMain"
+  },
+  "settings": {
+    "title": "Settings",
+    "openedFrom": "Opened from: {{from}}",
+    "goBack": "goBack()",
+    "selectYourLanguage": "Select your language",
+    "languageSheetTitle": "Select your language",
+    "languageEnglish": "English",
+    "languageSpanish": "Spanish",
+    "useDeviceLanguage": "Use device language",
+    "language": "Language",
+    "theme": "Theme",
+    "search": "Search settings",
+    "themeSheetTitle": "Select theme",
+    "themeSystem": "System",
+    "themeLight": "Light",
+    "themeDark": "Dark"
+  },
+  "posts": {
+    "title": "Posts",
+    "loading": "Loading posts…",
+    "empty": "No posts.",
+    "searchPlaceholder": "Search posts…",
+    "noResults": "No posts match your search.",
+    "searchResultsFor": "Results for \"{{query}}\""
+  },
+  "errorBoundary": {
+    "title": "Oops! Something went wrong",
+    "fallbackMessage": "An unexpected error occurred.",
+    "tryAgain": "Try again",
+    "iconA11y": "Warning"
+  },
+  "exampleModal": {
+    "title": "Presentation modal",
+    "caption": "options.presentation = 'modal'",
+    "dismiss": "Dismiss (goBack)"
+  },
+  "transparentModal": {
+    "title": "Transparent modal",
+    "close": "Close"
+  },
+  "fullScreenModal": {
+    "title": "Full screen modal",
+    "caption": "presentation: fullScreenModal (common on iOS)",
+    "dismiss": "Dismiss"
+  },
+  "socialLogin": {
+    "signInErrorTitle": "Sign-in Error",
+    "errorTitle": "Error",
+    "signOutFailed": "Sign-out failed",
+    "signInFailed": "{{provider}} sign-in failed",
+    "signedInFallback": "Signed In",
+    "viaProvider": "via {{provider}}",
+    "signOut": "Sign Out",
+    "title": "Sign In",
+    "subtitle": "Choose a provider to continue",
+    "continueGoogle": "Continue with Google",
+    "continueApple": "Continue with Apple",
+    "continueFacebook": "Continue with Facebook"
+  },
+  "carouselCatalog": {
+    "screenTitle": "Carousel catalog",
+    "sectionFullWidth": "Full-width with pagination",
+    "sectionFullWidthCaption": "Default horizontal carousel with loop. Dots use `onProgressChange` and `Pagination.Basic` from the same package.",
+    "sectionPeek": "Peek / card lane",
+    "sectionPeekCaption": "Slide width is smaller than the row so neighbors peek in—common for hero cards and featured picks.",
+    "sectionParallax": "Parallax mode",
+    "sectionParallaxCaption": "Non-active slides scale and shift (`mode=\"parallax\"`) so the focused slide feels centered.",
+    "sectionStack": "Horizontal stack",
+    "sectionStackCaption": "Overlapping deck layout (`mode=\"horizontal-stack\"`)—useful for swipeable choices or media stacks.",
+    "sectionVertical": "Vertical carousel",
+    "sectionVerticalCaption": "`vertical` layout when up/down paging fits better than horizontal swipes.",
+    "slideTitle": "Slide {{n}}",
+    "swipeHint": "Swipe sideways",
+    "paginationHint": "Progress drives the dots; you can add `onPress` on `Pagination.Basic` to jump to a slide.",
+    "peekHint": "A smaller `width` than the screen centers the lane and reveals adjacent slides.",
+    "verticalHint": "Vertical pan thresholds are tuned so the carousel still works inside this scroll view.",
+    "a11yFullWidth": "Full-width carousel with dot pagination",
+    "a11yPeek": "Peek-style carousel with narrower slides",
+    "a11yParallax": "Parallax carousel example",
+    "a11yStack": "Horizontal stack carousel example",
+    "a11yVertical": "Vertical carousel example"
+  }
+}
