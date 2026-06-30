@@ -16,7 +16,7 @@ jobs:
         with:
           fetch-depth: 0
 
-      - uses: StalinChristopher/TemplateCodeMetrics@claude_semantic_score
+      - uses: StalinChristopher/TemplateCodeMetrics@main
         with:
           devlake-webhook-url: ${{ secrets.DEVLAKE_WEBHOOK_URL }}
           devlake-basic-auth:  ${{ secrets.DEVLAKE_BASIC_AUTH }}
