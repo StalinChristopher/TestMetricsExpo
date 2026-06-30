@@ -4,9 +4,9 @@ description: Integrate Template Code Metrics tracking into this repo. Adds the G
 
 # Setup Template Code Metrics in this repository
 
-You are integrating the `codeandtheory/TemplateCodeMetrics` GitHub Action into the **current** repository so that every push to `main` reports a template-vs-custom code breakdown to a shared DevLake instance, visible in Grafana.
+You are integrating the `StalinChristopher/TemplateCodeMetrics` GitHub Action into the **current** repository so that every push to `main` reports a template-vs-custom code breakdown to a shared DevLake instance, visible in Grafana.
 
-Reference: https://github.com/codeandtheory/TemplateCodeMetrics
+Reference: https://github.com/StalinChristopher/TemplateCodeMetrics
 
 ## What to do, in order
 
@@ -129,7 +129,7 @@ Offer to run a smoke test:
 > "Want me to download the metric script and run it locally so we can see what the current template_pct will be?"
 
 If yes:
-- `curl -fsSL https://raw.githubusercontent.com/codeandtheory/TemplateCodeMetrics/main/scripts/template-metrics.mjs -o /tmp/template-metrics.mjs`
+- `curl -fsSL https://raw.githubusercontent.com/StalinChristopher/TemplateCodeMetrics/main/scripts/template-metrics.mjs -o /tmp/template-metrics.mjs`
 - `node /tmp/template-metrics.mjs | jq '.percentages, .counts'`
 - Show the user the output and a one-line interpretation: "This repo is currently X% template / Y% custom (Z LOC tracked)."
 
