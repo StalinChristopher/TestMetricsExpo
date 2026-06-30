@@ -37,10 +37,7 @@ export function TransparentModalScreen({ navigation, route }: Props) {
 
   return (
     <View style={styles.backdrop}>
-      <Pressable
-        style={styles.dismissHitbox}
-        onPress={dismiss}
-      />
+      <Pressable style={styles.dismissHitbox} onPress={dismiss} />
       <View style={styles.card}>
         <AppText variant="bodyLg" color="text1" style={{ fontWeight: "700" }}>
           {t("transparentModal.title")}
@@ -50,10 +47,7 @@ export function TransparentModalScreen({ navigation, route }: Props) {
             {message}
           </AppText>
         ) : null}
-        <AppButton
-          label={t("transparentModal.close")}
-          onPress={dismiss}
-        />
+        <AppButton label={t("transparentModal.close")} onPress={dismiss} />
       </View>
     </View>
   );

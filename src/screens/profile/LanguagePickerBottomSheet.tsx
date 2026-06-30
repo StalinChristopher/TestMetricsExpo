@@ -52,7 +52,10 @@ const OptionRow = memo(function OptionRow({
   rowLastStyle,
   onSelect,
 }: OptionRowProps) {
-  const handlePress = useCallback(() => onSelect(optionKey), [onSelect, optionKey]);
+  const handlePress = useCallback(
+    () => onSelect(optionKey),
+    [onSelect, optionKey],
+  );
   return (
     <Pressable
       accessibilityRole="button"

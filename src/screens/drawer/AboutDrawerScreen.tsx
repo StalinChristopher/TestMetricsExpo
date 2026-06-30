@@ -29,7 +29,11 @@ export function AboutDrawerScreen({ navigation }: Props) {
   );
 
   const goTabs = useCallback(
-    () => navigation.navigate("TabRoot", { screen: "HomeTab", params: { screen: "HomeMain" } }),
+    () =>
+      navigation.navigate("TabRoot", {
+        screen: "HomeTab",
+        params: { screen: "HomeMain" },
+      }),
     [navigation],
   );
   const closeDrawer = useCallback(() => navigation.closeDrawer(), [navigation]);
@@ -42,14 +46,8 @@ export function AboutDrawerScreen({ navigation }: Props) {
       <AppText variant="bodySm" color="text2" style={{ opacity: 0.7 }}>
         {t("aboutDrawer.caption")}
       </AppText>
-      <AppButton
-        label={t("aboutDrawer.goTabs")}
-        onPress={goTabs}
-      />
-      <AppButton
-        label={t("aboutDrawer.closeDrawer")}
-        onPress={closeDrawer}
-      />
+      <AppButton label={t("aboutDrawer.goTabs")} onPress={goTabs} />
+      <AppButton label={t("aboutDrawer.closeDrawer")} onPress={closeDrawer} />
     </View>
   );
 }

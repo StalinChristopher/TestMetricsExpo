@@ -1,14 +1,14 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
-import { Animated, Platform, Pressable } from 'react-native';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import React, { useCallback, useEffect, useRef, useState } from "react";
+import { Animated, Platform, Pressable } from "react-native";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
-import { AppText } from '../components/AppText';
-import { BorderRadiusToken } from '../designSystem/generated/borderRadius';
-import { SpacingToken } from '../designSystem/generated/spacing';
-import { useAppTheme } from '../theme/ThemeContext';
-import { useThemedStyles } from '../theme/useThemedStyles';
-import { getFeedbackTypeBackground } from './feedbackTypeColors';
-import type { SnackbarConfig } from './types';
+import { AppText } from "../components/AppText";
+import { BorderRadiusToken } from "../designSystem/generated/borderRadius";
+import { SpacingToken } from "../designSystem/generated/spacing";
+import { useAppTheme } from "../theme/ThemeContext";
+import { useThemedStyles } from "../theme/useThemedStyles";
+import { getFeedbackTypeBackground } from "./feedbackTypeColors";
+import type { SnackbarConfig } from "./types";
 
 interface SnackbarProps {
   config: SnackbarConfig | null;
@@ -23,7 +23,7 @@ export function Snackbar({ config, onDismiss }: SnackbarProps) {
 
   const styles = useThemedStyles(c => ({
     container: {
-      position: 'absolute',
+      position: "absolute",
       left: SpacingToken.spacing_value_4,
       right: SpacingToken.spacing_value_4,
       borderRadius: BorderRadiusToken.lg,
@@ -40,8 +40,8 @@ export function Snackbar({ config, onDismiss }: SnackbarProps) {
       }),
     },
     content: {
-      flexDirection: 'row',
-      alignItems: 'center',
+      flexDirection: "row",
+      alignItems: "center",
       paddingHorizontal: SpacingToken.spacing_value_4,
       paddingVertical: SpacingToken.spacing_value_3_5,
     },
@@ -90,16 +90,16 @@ export function Snackbar({ config, onDismiss }: SnackbarProps) {
 
   if (!config) return null;
 
-  const position = config.position || 'bottom';
+  const position = config.position || "bottom";
   const backgroundColor = getFeedbackTypeBackground(config.type, colors);
 
   const translateY = animation.interpolate({
     inputRange: [0, 1],
-    outputRange: position === 'bottom' ? [100, 0] : [-100, 0],
+    outputRange: position === "bottom" ? [100, 0] : [-100, 0],
   });
 
   const positionStyle =
-    position === 'bottom'
+    position === "bottom"
       ? { bottom: insets.bottom + SpacingToken.spacing_value_4 }
       : { top: insets.top + SpacingToken.spacing_value_4 };
 
@@ -112,7 +112,11 @@ export function Snackbar({ config, onDismiss }: SnackbarProps) {
       ]}
     >
       <Pressable onPress={dismissSnackbar} style={styles.content}>
-        <AppText variant="bodySm" color="textOnPrimary" style={{ flex: 1, fontWeight: '500' }}>
+        <AppText
+          variant="bodySm"
+          color="textOnPrimary"
+          style={{ flex: 1, fontWeight: "500" }}
+        >
           {config.message}
         </AppText>
         {config.action && (
@@ -128,7 +132,7 @@ export function Snackbar({ config, onDismiss }: SnackbarProps) {
             <AppText
               variant="bodySm"
               color="textOnPrimary"
-              style={{ fontWeight: '700', textTransform: 'uppercase' }}
+              style={{ fontWeight: "700", textTransform: "uppercase" }}
             >
               {config.action.text}
             </AppText>

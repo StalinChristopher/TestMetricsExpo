@@ -32,18 +32,21 @@ export function ProfileScreen({ navigation }: Props) {
     () => navigation.dispatch(DrawerActions.openDrawer()),
     [navigation],
   );
-  const navigateSettings = useCallback(() => navigation.navigate("Settings"), [navigation]);
+  const navigateSettings = useCallback(
+    () => navigation.navigate("Settings"),
+    [navigation],
+  );
   const resetStack = useCallback(
-    () => navigation.dispatch(CommonActions.reset({ index: 0, routes: [{ name: "ProfileMain" }] })),
+    () =>
+      navigation.dispatch(
+        CommonActions.reset({ index: 0, routes: [{ name: "ProfileMain" }] }),
+      ),
     [navigation],
   );
 
   return (
     <View style={styles.root}>
-      <TopBar
-        topBarTitle={APP_DISPLAY_NAME}
-        onMenuPress={openDrawer}
-      />
+      <TopBar topBarTitle={APP_DISPLAY_NAME} onMenuPress={openDrawer} />
       <View style={styles.container}>
         <AppText variant="headingSm" color="text1">
           {t("profile.title")}

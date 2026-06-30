@@ -22,24 +22,44 @@ export function HomeScreen({ navigation }: Props) {
     [navigation],
   );
   const navigateDetail = useCallback(
-    () => navigation.navigate("HomeDetail", { itemId: "42", title: t("home.demoItemTitle") }),
+    () =>
+      navigation.navigate("HomeDetail", {
+        itemId: "42",
+        title: t("home.demoItemTitle"),
+      }),
     [navigation, t],
   );
-  const pushDuplicate = useCallback(() => navigation.push("HomeMain"), [navigation]);
+  const pushDuplicate = useCallback(
+    () => navigation.push("HomeMain"),
+    [navigation],
+  );
   const jumpExplore = useCallback(
     () => navigation.navigate("ExploreTab", { screen: "ExploreMain" }),
     [navigation],
   );
   const openSettings = useCallback(
-    () => navigation.navigate("ProfileTab", { screen: "Settings", params: { from: "Home" } }),
+    () =>
+      navigation.navigate("ProfileTab", {
+        screen: "Settings",
+        params: { from: "Home" },
+      }),
     [navigation],
   );
-  const openRootModal = useCallback(() => navigationRef.navigate("ExampleModal"), []);
+  const openRootModal = useCallback(
+    () => navigationRef.navigate("ExampleModal"),
+    [],
+  );
   const openTransparentModal = useCallback(
-    () => navigationRef.navigate("TransparentModal", { message: t("home.fromHomeMessage") }),
+    () =>
+      navigationRef.navigate("TransparentModal", {
+        message: t("home.fromHomeMessage"),
+      }),
     [t],
   );
-  const openFullScreenModal = useCallback(() => navigationRef.navigate("FullScreenModal"), []);
+  const openFullScreenModal = useCallback(
+    () => navigationRef.navigate("FullScreenModal"),
+    [],
+  );
 
   const styles = useThemedStyles(
     colors => ({
@@ -56,10 +76,7 @@ export function HomeScreen({ navigation }: Props) {
 
   return (
     <View style={styles.root}>
-      <TopBar
-        topBarTitle={APP_DISPLAY_NAME}
-        onMenuPress={openDrawer}
-      />
+      <TopBar topBarTitle={APP_DISPLAY_NAME} onMenuPress={openDrawer} />
       <View style={styles.container}>
         <AppText variant="headingSm" color="text1">
           {t("home.title")}
@@ -68,30 +85,15 @@ export function HomeScreen({ navigation }: Props) {
           {t("home.caption")}
         </AppText>
 
-        <AppButton
-          label={t("home.navigateDetail")}
-          onPress={navigateDetail}
-        />
+        <AppButton label={t("home.navigateDetail")} onPress={navigateDetail} />
 
-        <AppButton
-          label={t("home.pushDuplicate")}
-          onPress={pushDuplicate}
-        />
+        <AppButton label={t("home.pushDuplicate")} onPress={pushDuplicate} />
 
-        <AppButton
-          label={t("home.jumpExplore")}
-          onPress={jumpExplore}
-        />
+        <AppButton label={t("home.jumpExplore")} onPress={jumpExplore} />
 
-        <AppButton
-          label={t("home.openSettings")}
-          onPress={openSettings}
-        />
+        <AppButton label={t("home.openSettings")} onPress={openSettings} />
 
-        <AppButton
-          label={t("home.rootModal")}
-          onPress={openRootModal}
-        />
+        <AppButton label={t("home.rootModal")} onPress={openRootModal} />
 
         <AppButton
           label={t("home.transparentModal")}

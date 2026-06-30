@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 import {
   View,
   Modal,
@@ -7,22 +7,22 @@ import {
   Dimensions,
   Platform,
   StyleSheet,
-} from 'react-native';
+} from "react-native";
 
-import { AppText } from '../components/AppText';
-import { BorderRadiusToken } from '../designSystem/generated/borderRadius';
-import { SpacingToken } from '../designSystem/generated/spacing';
-import { useAppTheme } from '../theme/ThemeContext';
-import { useThemedStyles } from '../theme/useThemedStyles';
-import { getFeedbackTypeBackground } from './feedbackTypeColors';
-import type { AlertConfig } from './types';
+import { AppText } from "../components/AppText";
+import { BorderRadiusToken } from "../designSystem/generated/borderRadius";
+import { SpacingToken } from "../designSystem/generated/spacing";
+import { useAppTheme } from "../theme/ThemeContext";
+import { useThemedStyles } from "../theme/useThemedStyles";
+import { getFeedbackTypeBackground } from "./feedbackTypeColors";
+import type { AlertConfig } from "./types";
 
 interface AlertProps {
   config: AlertConfig | null;
   onDismiss: () => void;
 }
 
-const { width } = Dimensions.get('window');
+const { width } = Dimensions.get("window");
 
 export function Alert({ config, onDismiss }: AlertProps) {
   const { colors } = useAppTheme();
@@ -35,12 +35,12 @@ export function Alert({ config, onDismiss }: AlertProps) {
     },
     backdrop: {
       ...StyleSheet.absoluteFillObject,
-      backgroundColor: 'rgba(0, 0, 0, 0.5)',
+      backgroundColor: "rgba(0, 0, 0, 0.5)",
     },
     centeredView: {
       flex: 1,
-      justifyContent: 'center',
-      alignItems: 'center',
+      justifyContent: "center",
+      alignItems: "center",
       padding: SpacingToken.spacing_value_5,
     },
     alertBox: {
@@ -48,7 +48,7 @@ export function Alert({ config, onDismiss }: AlertProps) {
       backgroundColor: c.background,
       borderRadius: BorderRadiusToken.xl_2,
       padding: SpacingToken.spacing_value_6,
-      alignItems: 'center',
+      alignItems: "center",
       ...Platform.select({
         ios: {
           shadowColor: c.black,
@@ -65,13 +65,13 @@ export function Alert({ config, onDismiss }: AlertProps) {
       width: SpacingToken.spacing_value_14,
       height: SpacingToken.spacing_value_14,
       borderRadius: BorderRadiusToken.full,
-      alignItems: 'center',
-      justifyContent: 'center',
+      alignItems: "center",
+      justifyContent: "center",
       marginBottom: SpacingToken.spacing_value_4,
     },
     buttonContainer: {
-      flexDirection: 'row',
-      width: '100%',
+      flexDirection: "row",
+      width: "100%",
     },
     button: {
       flex: 1,
@@ -79,8 +79,8 @@ export function Alert({ config, onDismiss }: AlertProps) {
       paddingHorizontal: SpacingToken.spacing_value_4,
       borderRadius: BorderRadiusToken.lg,
       backgroundColor: c.primary,
-      alignItems: 'center',
-      justifyContent: 'center',
+      alignItems: "center",
+      justifyContent: "center",
     },
     buttonCancel: {
       backgroundColor: c.grayBackground,
@@ -136,7 +136,7 @@ export function Alert({ config, onDismiss }: AlertProps) {
 
   if (!config) return null;
 
-  const buttons = config.buttons || [{ text: 'OK', onPress: handleDismiss }];
+  const buttons = config.buttons || [{ text: "OK", onPress: handleDismiss }];
   const iconColor = getFeedbackTypeBackground(config.type, colors);
 
   return (
@@ -152,21 +152,32 @@ export function Alert({ config, onDismiss }: AlertProps) {
           ]}
         >
           <View style={[styles.iconContainer, { backgroundColor: iconColor }]}>
-            <AppText variant="headingSm" color="textOnPrimary" style={{ fontWeight: '700' }}>
-              {getIcon(config.type || 'info')}
+            <AppText
+              variant="headingSm"
+              color="textOnPrimary"
+              style={{ fontWeight: "700" }}
+            >
+              {getIcon(config.type || "info")}
             </AppText>
           </View>
           <AppText
             variant="bodyLg"
             color="text1"
-            style={{ fontWeight: '700', marginBottom: SpacingToken.spacing_value_2, textAlign: 'center' }}
+            style={{
+              fontWeight: "700",
+              marginBottom: SpacingToken.spacing_value_2,
+              textAlign: "center",
+            }}
           >
             {config.title}
           </AppText>
           <AppText
             variant="bodySm"
             color="text2"
-            style={{ textAlign: 'center', marginBottom: SpacingToken.spacing_value_6 }}
+            style={{
+              textAlign: "center",
+              marginBottom: SpacingToken.spacing_value_6,
+            }}
           >
             {config.message}
           </AppText>
@@ -176,8 +187,8 @@ export function Alert({ config, onDismiss }: AlertProps) {
                 key={index}
                 style={({ pressed }) => [
                   styles.button,
-                  button.style === 'cancel' && styles.buttonCancel,
-                  button.style === 'destructive' && styles.buttonDestructive,
+                  button.style === "cancel" && styles.buttonCancel,
+                  button.style === "destructive" && styles.buttonDestructive,
                   pressed && styles.buttonPressed,
                   buttons.length > 1 && index > 0 && styles.buttonMargin,
                 ]}
@@ -190,12 +201,8 @@ export function Alert({ config, onDismiss }: AlertProps) {
               >
                 <AppText
                   variant="bodyMd"
-                  color={
-                    button.style === 'cancel'
-                      ? 'text1'
-                      : 'textOnPrimary'
-                  }
-                  style={{ fontWeight: '600' }}
+                  color={button.style === "cancel" ? "text1" : "textOnPrimary"}
+                  style={{ fontWeight: "600" }}
                 >
                   {button.text}
                 </AppText>
@@ -210,14 +217,14 @@ export function Alert({ config, onDismiss }: AlertProps) {
 
 function getIcon(type: string): string {
   switch (type) {
-    case 'success':
-      return '✓';
-    case 'error':
-      return '✕';
-    case 'warning':
-      return '⚠';
-    case 'info':
+    case "success":
+      return "✓";
+    case "error":
+      return "✕";
+    case "warning":
+      return "⚠";
+    case "info":
     default:
-      return 'i';
+      return "i";
   }
 }

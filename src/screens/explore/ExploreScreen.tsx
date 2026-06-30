@@ -43,10 +43,7 @@ export function ExploreScreen({ navigation }: Props) {
 
   return (
     <View style={styles.root}>
-      <TopBar
-        topBarTitle={APP_DISPLAY_NAME}
-        onMenuPress={openDrawer}
-      />
+      <TopBar topBarTitle={APP_DISPLAY_NAME} onMenuPress={openDrawer} />
       <View style={styles.container}>
         <AppText variant="headingSm" color="text1">
           {t("explore.title")}

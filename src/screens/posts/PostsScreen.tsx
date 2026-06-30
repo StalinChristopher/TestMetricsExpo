@@ -56,7 +56,12 @@ function PostRow({ item }: PostRowProps) {
       <AppText variant="bodyMd" color="text1" style={styles.title}>
         {item.title}
       </AppText>
-      <AppText variant="bodySm" color="text2" numberOfLines={2} style={styles.body}>
+      <AppText
+        variant="bodySm"
+        color="text2"
+        numberOfLines={2}
+        style={styles.body}
+      >
         {item.body}
       </AppText>
     </View>
@@ -131,7 +136,9 @@ const PostsScreen = ({ navigation }: Props) => {
     [navigation],
   );
 
-  const menuBar = <TopBar topBarTitle={APP_DISPLAY_NAME} onMenuPress={openMenu} />;
+  const menuBar = (
+    <TopBar topBarTitle={APP_DISPLAY_NAME} onMenuPress={openMenu} />
+  );
 
   if (isPending) {
     return (

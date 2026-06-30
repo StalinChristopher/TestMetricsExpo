@@ -2,7 +2,10 @@ import { FlashList, type FlashListProps } from "@shopify/flash-list";
 import React, { useMemo } from "react";
 import { StyleSheet, type StyleProp, type ViewStyle } from "react-native";
 
-export type AppListProps<T> = Omit<FlashListProps<T>, "keyExtractor" | "estimatedItemSize"> & {
+export type AppListProps<T> = Omit<
+  FlashListProps<T>,
+  "keyExtractor" | "estimatedItemSize"
+> & {
   /** Stable unique key per row — never use array index alone. */
   keyExtractor: (item: T, index: number) => string;
   /** Approximate average item height in dp (width for horizontal lists). FlashList uses this to size its recycling pool — a rough estimate is fine. */

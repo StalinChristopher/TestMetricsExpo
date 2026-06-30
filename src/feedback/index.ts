@@ -1,5 +1,5 @@
-export { FeedbackProvider } from './FeedbackProvider';
-export { FeedbackManager } from './FeedbackManager';
+export { FeedbackProvider } from "./FeedbackProvider";
+export { FeedbackManager } from "./FeedbackManager";
 export type {
   SnackbarConfig,
   ToastConfig,
@@ -8,4 +8,4 @@ export type {
   ActionButton,
   FeedbackType,
   FeedbackPosition,
-} from './types';
+} from "./types";

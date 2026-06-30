@@ -1,6 +1,6 @@
-export type FeedbackType = 'success' | 'error' | 'warning' | 'info';
+export type FeedbackType = "success" | "error" | "warning" | "info";
 
-export type FeedbackPosition = 'top' | 'bottom';
+export type FeedbackPosition = "top" | "bottom";
 
 export interface ActionButton {
   text: string;
@@ -34,5 +34,5 @@ export interface AlertConfig {
 export interface AlertButton {
   text: string;
   onPress?: () => void;
-  style?: 'default' | 'cancel' | 'destructive';
+  style?: "default" | "cancel" | "destructive";
 }

@@ -11,8 +11,8 @@ import { AboutDrawerScreen } from "../screens/drawer/AboutDrawerScreen";
 import type { DrawerParamList } from "./types";
 import { MainTabs } from "./MainTabs";
 import { SettingsScreen } from "../screens/profile/SettingsScreen";
-import { FeedbackCatalogScreen } from '../screens/FeedbackCatalogScreen';
-import { CarouselCatalogScreen } from '../screens/CarouselCatalogScreen';
+import { FeedbackCatalogScreen } from "../screens/FeedbackCatalogScreen";
+import { CarouselCatalogScreen } from "../screens/CarouselCatalogScreen";
 
 const Drawer = createDrawerNavigator<DrawerParamList>();
 
@@ -70,12 +70,12 @@ export function MainDrawer() {
       <Drawer.Screen
         name="FeedbackCatalog"
         component={FeedbackCatalogScreen}
-        options={{ title: 'Feedback', drawerLabel: 'Feedback Catalog' }}
+        options={{ title: "Feedback", drawerLabel: "Feedback Catalog" }}
       />
       <Drawer.Screen
         name="CarouselCatalog"
         component={CarouselCatalogScreen}
-        options={{ title: 'Carousel', drawerLabel: 'Carousel Catalog' }}
+        options={{ title: "Carousel", drawerLabel: "Carousel Catalog" }}
       />
     </Drawer.Navigator>
   );

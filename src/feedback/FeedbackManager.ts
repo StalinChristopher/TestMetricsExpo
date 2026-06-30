@@ -1,4 +1,4 @@
-import type { SnackbarConfig, ToastConfig, AlertConfig } from './types';
+import type { SnackbarConfig, ToastConfig, AlertConfig } from "./types";
 
 type SnackbarCallback = (config: SnackbarConfig) => void;
 type ToastCallback = (config: ToastConfig) => void;

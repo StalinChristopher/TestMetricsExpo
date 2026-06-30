@@ -1,10 +1,10 @@
-import React, { useCallback, useState } from 'react';
-import { View, StyleSheet } from 'react-native';
-import type { SnackbarConfig, ToastConfig, AlertConfig } from './types';
-import { Snackbar } from './Snackbar';
-import { Toast } from './Toast';
-import { Alert } from './Alert';
-import { FeedbackManager } from './FeedbackManager';
+import React, { useCallback, useState } from "react";
+import { View, StyleSheet } from "react-native";
+import type { SnackbarConfig, ToastConfig, AlertConfig } from "./types";
+import { Snackbar } from "./Snackbar";
+import { Toast } from "./Toast";
+import { Alert } from "./Alert";
+import { FeedbackManager } from "./FeedbackManager";
 
 interface FeedbackProviderProps {
   children: React.ReactNode;

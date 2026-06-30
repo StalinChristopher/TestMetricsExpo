@@ -29,7 +29,10 @@ export function HomeDetailScreen({ navigation, route }: Props) {
 
   const goBack = useCallback(() => navigation.goBack(), [navigation]);
   const popToTop = useCallback(() => navigation.popToTop(), [navigation]);
-  const replaceMain = useCallback(() => navigation.replace("HomeMain"), [navigation]);
+  const replaceMain = useCallback(
+    () => navigation.replace("HomeMain"),
+    [navigation],
+  );
   const setParamsTitle = useCallback(
     () => navigation.setParams({ title: t("homeDetail.updatedTitle") }),
     [navigation, t],

@@ -1,19 +1,14 @@
-import React, { useCallback, useEffect, useState } from 'react';
-import {
-  View,
-  Animated,
-  Pressable,
-  Platform,
-} from 'react-native';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import React, { useCallback, useEffect, useState } from "react";
+import { View, Animated, Pressable, Platform } from "react-native";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
-import { AppText } from '../components/AppText';
-import { BorderRadiusToken } from '../designSystem/generated/borderRadius';
-import { SpacingToken } from '../designSystem/generated/spacing';
-import { useAppTheme } from '../theme/ThemeContext';
-import { useThemedStyles } from '../theme/useThemedStyles';
-import { getFeedbackTypeBackground } from './feedbackTypeColors';
-import type { ToastConfig } from './types';
+import { AppText } from "../components/AppText";
+import { BorderRadiusToken } from "../designSystem/generated/borderRadius";
+import { SpacingToken } from "../designSystem/generated/spacing";
+import { useAppTheme } from "../theme/ThemeContext";
+import { useThemedStyles } from "../theme/useThemedStyles";
+import { getFeedbackTypeBackground } from "./feedbackTypeColors";
+import type { ToastConfig } from "./types";
 
 interface ToastProps {
   config: ToastConfig | null;
@@ -28,7 +23,7 @@ export function Toast({ config, onDismiss }: ToastProps) {
 
   const styles = useThemedStyles(c => ({
     container: {
-      position: 'absolute',
+      position: "absolute",
       left: SpacingToken.spacing_value_4,
       right: SpacingToken.spacing_value_4,
       backgroundColor: c.background,
@@ -46,8 +41,8 @@ export function Toast({ config, onDismiss }: ToastProps) {
       }),
     },
     content: {
-      flexDirection: 'row',
-      alignItems: 'center',
+      flexDirection: "row",
+      alignItems: "center",
       paddingHorizontal: SpacingToken.spacing_value_4,
       paddingVertical: SpacingToken.spacing_value_3,
     },
@@ -55,8 +50,8 @@ export function Toast({ config, onDismiss }: ToastProps) {
       width: SpacingToken.spacing_value_8,
       height: SpacingToken.spacing_value_8,
       borderRadius: BorderRadiusToken.full,
-      alignItems: 'center',
-      justifyContent: 'center',
+      alignItems: "center",
+      justifyContent: "center",
       marginRight: SpacingToken.spacing_value_3,
     },
     textContainer: {
@@ -115,16 +110,16 @@ export function Toast({ config, onDismiss }: ToastProps) {
 
   if (!config) return null;
 
-  const position = config.position || 'top';
+  const position = config.position || "top";
   const iconColor = getFeedbackTypeBackground(config.type, colors);
 
   const translateY = animation.interpolate({
     inputRange: [0, 1],
-    outputRange: position === 'bottom' ? [100, 0] : [-100, 0],
+    outputRange: position === "bottom" ? [100, 0] : [-100, 0],
   });
 
   const positionStyle =
-    position === 'bottom'
+    position === "bottom"
       ? { bottom: insets.bottom + SpacingToken.spacing_value_4 }
       : { top: insets.top + SpacingToken.spacing_value_4 };
 
@@ -138,13 +133,21 @@ export function Toast({ config, onDismiss }: ToastProps) {
     >
       <Pressable onPress={dismissToast} style={styles.content}>
         <View style={[styles.icon, { backgroundColor: iconColor }]}>
-          <AppText variant="bodyMd" color="textOnPrimary" style={{ fontWeight: '700' }}>
-            {getIcon(config.type || 'info')}
+          <AppText
+            variant="bodyMd"
+            color="textOnPrimary"
+            style={{ fontWeight: "700" }}
+          >
+            {getIcon(config.type || "info")}
           </AppText>
         </View>
         <View style={styles.textContainer}>
           {config.title ? (
-            <AppText variant="bodyMd" color="text1" style={{ fontWeight: '600', marginBottom: 2 }}>
+            <AppText
+              variant="bodyMd"
+              color="text1"
+              style={{ fontWeight: "600", marginBottom: 2 }}
+            >
               {config.title}
             </AppText>
           ) : null}
@@ -165,7 +168,7 @@ export function Toast({ config, onDismiss }: ToastProps) {
             <AppText
               variant="bodySm"
               color="primary"
-              style={{ fontWeight: '700', textTransform: 'uppercase' }}
+              style={{ fontWeight: "700", textTransform: "uppercase" }}
             >
               {config.action.text}
             </AppText>
@@ -178,14 +181,14 @@ export function Toast({ config, onDismiss }: ToastProps) {
 
 function getIcon(type: string): string {
   switch (type) {
-    case 'success':
-      return '✓';
-    case 'error':
-      return '✕';
-    case 'warning':
-      return '!';
-    case 'info':
+    case "success":
+      return "✓";
+    case "error":
+      return "✕";
+    case "warning":
+      return "!";
+    case "info":
     default:
-      return 'i';
+      return "i";
   }
 }

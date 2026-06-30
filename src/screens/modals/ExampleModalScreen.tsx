@@ -40,10 +40,7 @@ export function ExampleModalScreen({ navigation }: Props) {
       >
         {t("exampleModal.caption")}
       </AppText>
-      <AppButton
-        label={t("exampleModal.dismiss")}
-        onPress={dismiss}
-      />
+      <AppButton label={t("exampleModal.dismiss")} onPress={dismiss} />
     </View>
   );
 }

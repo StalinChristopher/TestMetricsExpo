@@ -11,7 +11,7 @@ import { AppThemeProvider } from "./src/theme/ThemeContext";
 import { ConnectivityProvider } from "./src/connectivity/ConnectivityHelper";
 import { AppRootErrorBoundary } from "./src/utils/errorBoundary";
 import { LoadingProvider } from "./src/utils/loading";
-import { FeedbackProvider } from './src/feedback';
+import { FeedbackProvider } from "./src/feedback";
 
 export default function App() {
   return (
@@ -20,15 +20,15 @@ export default function App() {
         <BottomSheetModalProvider>
           <SafeAreaProvider>
             <FeedbackProvider>
-            <QueryProvider>
-              <ConnectivityProvider>
-                <LoadingProvider>
-                  <AppRootErrorBoundary>
-                    <ThemedNavigationContainer />
-                  </AppRootErrorBoundary>
-                </LoadingProvider>
-              </ConnectivityProvider>
-            </QueryProvider>
+              <QueryProvider>
+                <ConnectivityProvider>
+                  <LoadingProvider>
+                    <AppRootErrorBoundary>
+                      <ThemedNavigationContainer />
+                    </AppRootErrorBoundary>
+                  </LoadingProvider>
+                </ConnectivityProvider>
+              </QueryProvider>
             </FeedbackProvider>
           </SafeAreaProvider>
         </BottomSheetModalProvider>
