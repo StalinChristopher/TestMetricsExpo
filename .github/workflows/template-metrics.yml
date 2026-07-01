@@ -115,7 +115,7 @@ jobs:
             exit 0
           fi
           curl -fsSL -X POST "$DEVLAKE_WEBHOOK_URL" \
-            -H "Authorization: Bearer $DEVLAKE_BASIC_AUTH" \
+            -u "$DEVLAKE_BASIC_AUTH" \
             -H 'Content-Type: application/json' \
             --data-binary @devlake-payload.json
           echo "Posted to DevLake successfully."
