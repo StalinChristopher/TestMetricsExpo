@@ -55,3 +55,7 @@ DerivedData
 
 yarn.lock
 .yarn/
+
+# CT Metrics AI snapshots
+.claude/ai_snapshots/
+.cursor/ai_snapshots/

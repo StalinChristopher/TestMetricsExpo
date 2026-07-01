@@ -1,0 +1,121 @@
+# Drop this into your target repo as .github/workflows/template-metrics.yml
+#
+# Required setup in the target repo:
+#   1. Set GitHub Actions secrets:
+#        CT_METRICS_TOKEN    — GitHub PAT with repo read access to codeandtheory/ct-github-code-metrics
+#        DEVLAKE_WEBHOOK_URL — webhook URL from your admin
+#        DEVLAKE_BASIC_AUTH  — user:pass for the DevLake config UI
+#   2. Create .template-provenance.json at repo root (see examples/<lang>/ for templates).
+#   3. (Optional) Install the AI attribution hooks locally so commits carry AI% data:
+#        Run /integrate-ai-tracker or /setup-ct-metrics in Claude Code or Cursor.
+#        AI attribution is read from git history — no additional secrets needed.
+#
+# That's it — push to main and the metrics flow.
+
+name: CT Code Metrics
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    types: [closed]
+  workflow_dispatch:
+
+jobs:
+  measure:
+    if: github.event_name != 'pull_request' || github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0     # required for baseline diff and attribution history
+
+      - name: Download metrics scripts
+        run: |
+          curl -fsSL \
+            -H "Authorization: token ${{ secrets.CT_METRICS_TOKEN }}" \
+            https://raw.githubusercontent.com/codeandtheory/ct-github-code-metrics/ak/ai-human-code-metrics-setup/core/scripts/template-metrics.mjs \
+            -o template-metrics.mjs
+          curl -fsSL \
+            -H "Authorization: token ${{ secrets.CT_METRICS_TOKEN }}" \
+            https://raw.githubusercontent.com/codeandtheory/ct-github-code-metrics/ak/ai-human-code-metrics-setup/core/scripts/ai-attribution-metrics.mjs \
+            -o ai-attribution-metrics.mjs
+
+      - name: Compute template-vs-custom metrics
+        env:
+          # Optional: enable Claude-judged semantic scoring alongside the deterministic score.
+          # Adds ~1¢ per commit; cosmetic-only diffs stop counting as customization.
+          # When unset, the script skips semantic scoring automatically.
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          node template-metrics.mjs > metrics.json
+          echo "=== Template Code Metrics ==="
+          jq '{template_pct: .percentages.template_pct, custom_pct: .percentages.custom_pct, total_loc: .counts.current_total_loc}' metrics.json
+
+      - name: Compute AI attribution metrics
+        run: |
+          node ai-attribution-metrics.mjs > ai-attribution.json
+          echo "=== AI Attribution Metrics ==="
+          jq '{ai_pct: .attribution.ai_pct, human_pct: .attribution.human_pct, commits_with_attribution: .attribution.commits_with_attribution, commits_analyzed: .attribution.commits_analyzed, coverage_pct: .attribution.coverage_pct}' ai-attribution.json
+
+      - name: Upload metrics artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: ct-metrics-${{ github.sha }}
+          path: |
+            metrics.json
+            ai-attribution.json
+          if-no-files-found: error
+
+      - name: Build combined metrics and POST to DevLake
+        env:
+          DEVLAKE_WEBHOOK_URL: ${{ secrets.DEVLAKE_WEBHOOK_URL }}
+          DEVLAKE_BASIC_AUTH: ${{ secrets.DEVLAKE_BASIC_AUTH }}
+        run: |
+          # Merge ai_attribution summary into template metrics JSON at the top level.
+          # schema_version stays at root so existing Grafana LIKE filters keep working.
+          jq -s '.[0] + {ai_attribution: .[1].attribution}' metrics.json ai-attribution.json > combined-metrics.json
+
+          NOW=$(date -u +%Y-%m-%dT%H:%M:%SZ)
+          REPO_URL="${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}"
+          jq -n \
+            --arg id "$GITHUB_SHA" \
+            --arg sha "$GITHUB_SHA" \
+            --arg ref "${GITHUB_REF_NAME:-main}" \
+            --arg repo "$REPO_URL" \
+            --arg now "$NOW" \
+            --slurpfile m combined-metrics.json \
+            '{
+              id: $id,
+              name: (
+                "metrics: " +
+                ($m[0].percentages.template_pct|tostring) + "% template / " +
+                ($m[0].percentages.custom_pct|tostring) + "% custom" +
+                (if ($m[0].ai_attribution != null and $m[0].ai_attribution.ai_pct != null)
+                 then " | " + ($m[0].ai_attribution.ai_pct|tostring) + "% AI / " + ($m[0].ai_attribution.human_pct|tostring) + "% human"
+                 else "" end)
+              ),
+              displayTitle: ($m[0] | tojson),
+              environment: "PRODUCTION",
+              startedDate: $now,
+              finishedDate: $now,
+              result: "SUCCESS",
+              deploymentCommits: [{
+                repoUrl: $repo,
+                commitSha: $sha,
+                refName: $ref,
+                startedDate: $now,
+                finishedDate: $now,
+                result: "SUCCESS"
+              }]
+            }' > devlake-payload.json
+
+          if [ -z "$DEVLAKE_WEBHOOK_URL" ] || [ -z "$DEVLAKE_BASIC_AUTH" ]; then
+            echo "DEVLAKE_WEBHOOK_URL or DEVLAKE_BASIC_AUTH not set — skipping POST."
+            exit 0
+          fi
+          curl -fsSL -X POST "$DEVLAKE_WEBHOOK_URL" \
+            -u "$DEVLAKE_BASIC_AUTH" \
+            -H 'Content-Type: application/json' \
+            --data-binary @devlake-payload.json
+          echo "Posted to DevLake successfully."
