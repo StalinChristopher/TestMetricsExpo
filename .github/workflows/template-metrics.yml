@@ -4,7 +4,7 @@
 #   1. Set GitHub Actions secrets:
 #        CT_METRICS_TOKEN    — GitHub PAT with repo read access to codeandtheory/ct-github-code-metrics
 #        DEVLAKE_WEBHOOK_URL — webhook URL from your admin
-#        DEVLAKE_BASIC_AUTH  — user:pass for the DevLake config UI
+#        DEVLAKE_BASIC_AUTH  — Bearer token from the DevLake webhook connection page
 #   2. Create .template-provenance.json at repo root (see examples/<lang>/ for templates).
 #   3. (Optional) Install the AI attribution hooks locally so commits carry AI% data:
 #        Run /integrate-ai-tracker or /setup-ct-metrics in Claude Code or Cursor.
@@ -115,7 +115,7 @@ jobs:
             exit 0
           fi
           curl -fsSL -X POST "$DEVLAKE_WEBHOOK_URL" \
-            -u "$DEVLAKE_BASIC_AUTH" \
+            -H "Authorization: Bearer $DEVLAKE_BASIC_AUTH" \
             -H 'Content-Type: application/json' \
             --data-binary @devlake-payload.json
           echo "Posted to DevLake successfully."
